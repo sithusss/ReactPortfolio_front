@@ -1,0 +1,82 @@
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  background-color: #1a1a1a;
+  color: #f0f0f0;
+  padding: 20px 40px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  border-top: 1px solid #444;
+  gap: 20px;
+}
+
+.footer-left {
+  flex: 1;
+  min-width: 200px;
+}
+
+.footer-left p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #aaa;
+}
+
+.footer-right {
+  flex: 2;
+  min-width: 250px;
+  text-align: right;
+}
+
+.footer-right h3 {
+  margin: 0 0 12px 0;
+  font-size: 1.1rem;
+  color: #ccc;
+}
+
+.tech-images {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.tech-img {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: contain;
+  background-color: white;
+  padding: 5px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 4px rgba(255, 255, 255, 0.05);
+}
+
+.tech-img:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.15);
+}
+
+/* Responsive Layout */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .footer-right {
+    text-align: left;
+  }
+
+  .tech-images {
+    justify-content: flex-start;
+    display: flex;
+    flex-direction: row;
+    
+  }
+  .tech-img {
+    width: 22px;
+    height: 22px;
+  } 
+}

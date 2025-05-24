@@ -1,0 +1,103 @@
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5); /* Dimmed background */
+  display: flex;
+  flex-direction:column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  
+}
+
+/* Modal content box */
+.messages-container {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  max-width: 1200px;
+  width: 90%;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  z-index: 1001;
+  position: relative;
+  max-height: 90vh;         /* 👈 Limit vertical height */
+  overflow-y: auto;         /* 👈 Enable scrolling */
+}
+
+.messages-table th,
+.messages-table td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: left;
+  width: 30%;
+}
+
+.messages-table th {
+  background-color: #f4f4f4;
+}
+
+.messages-table tr:hover {
+  background-color: #f9f9f9;
+}
+
+.modal.messages-modal {
+  max-width: 1000px;
+  padding: 20px;
+}
+
+.modal .close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: none;
+  background: transparent;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.delete-btn {
+  padding: 6px 12px;
+  margin: 2px;
+  font-size: 13px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.delete-btn, .cancel-btn {
+  background-color: #e53e3e;
+  color: white;
+}
+
+.delete-btn:hover {
+  background-color: #c53030;
+}
+
+.cancel-btn{
+  float:right;
+}
+
+.read-btn {
+  background-color: #3182ce;
+  color: white;
+  padding: 6px 10px;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.read-btn:hover {
+  background-color: #2b6cb0;
+}
+
+.messages-table.read {
+  margin-top: 2rem;
+}
+
+.messages-table.read th {
+  background-color: #e6fffa;
+}

@@ -1,0 +1,242 @@
+/* EducationAdmin.css */
+/* Main container aligned left */
+.admin-main-container {
+  max-width: 100%;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  display: grid;
+  grid-template-columns: 50% 50% /* Two equal columns */
+  
+ 
+}
+
+.education, .projects{
+  flex: 1; /* Allows the sections to grow and fill the space */
+   /* Space between sections */
+  max-width: 100%;
+  margin: 0 10px 0 10px; /* Top, Right, Bottom, Left */
+  
+}
+
+/* Title styling */
+.admin-title {
+  font-size: 28px;
+  color: #2a4365;
+  margin-bottom: 30px;
+  text-align: left;
+}
+
+/* Form styling */
+.admin-form {
+  background-color: #f9f9f9;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 40px;
+}
+
+.form-title {
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+}
+
+.admin-form input,
+.admin-form select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  width: 90%;
+}
+
+.submit-btn {
+  margin-top: 20px;
+  padding: 12px 25px;
+  background-color: #3182ce;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: #2b6cb0;
+}
+
+/* Table container styling */
+/* Table Container */
+.admin-table-container {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(170, 177, 186, 0.607);
+  overflow-x: auto; /* Makes it responsive */
+}
+
+/* Title */
+.table-title {
+  font-size: 22px;
+  margin-bottom: 15px;
+  color: #2d3748;
+  text-align: left;
+}
+
+/* Table */
+.admin-table {
+  width: 100%;
+  min-width: 900px;
+  border-collapse: collapse;
+  font-size: 12px;
+  border: 1px solid #e2e8f0;
+}
+
+/* Table Header */
+.admin-table th {
+  background-color: #edf2f7;
+  color: #2d3748;
+  font-weight: bold;
+  padding: 12px 16px;
+  border: 1px solid #e2e8f0;
+  text-align: left;
+  white-space: nowrap;
+}
+
+/* Table Cells */
+.admin-table td {
+  padding: 12px 16px;
+  border: 1px solid #e2e8f0;
+  vertical-align: top;
+  white-space: normal;
+  word-break: break-word;
+}
+
+/* Zebra Striping */
+.admin-table tr:nth-child(even) {
+  background-color: #d2d4d5;
+}
+
+/* Hover effect */
+.admin-table tr:hover {
+  background-color: #b5b9bc;
+  transition: background-color 0.2s ease;
+}
+
+/* Buttons */
+.edit-btn,
+.delete-btn, .submit-btn, .cancel-btn {
+  padding: 6px 12px;
+  margin: 2px;
+  font-size: 13px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.edit-btn {
+  background-color: #eba550;
+  color: white;
+}
+
+.edit-btn:hover {
+  background-color: #dd6b20;
+}
+
+.delete-btn {
+  background-color: #e53e3e;
+  color: white;
+}
+
+.delete-btn:hover {
+  background-color: #c53030;
+}
+
+/* No data */
+.no-data {
+  text-align: center;
+  color: gray;
+  font-style: italic;
+  padding: 20px 0;
+}
+
+/* Backdrop behind the modal */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5); /* Dimmed background */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* Modal content box */
+.modal {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  max-width: 600px;
+  width: 90%;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  z-index: 1001;
+  position: relative;
+}
+
+/* Modal form layout */
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Modal button actions */
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+.submit-btn {
+  background-color: #007bff;
+  color: white;
+}
+
+.submit-btn:hover {
+  background-color: #201989;
+}
+
+.cancel-btn {
+  background-color: #6a6868;
+  color: white;
+}
+
+.cancel-btn:hover {
+  background-color: #434343;
+}
+
+.messages-btn{
+  width: 50px;
+  background-color: #0fab00;
+  color: white;
+  padding: 10px;
+  margin: 15px;;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  float: right;
+}
+
+.messages-btn:hover {
+  background-color: #0a8b00;
+}

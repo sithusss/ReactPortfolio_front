@@ -1,0 +1,142 @@
+.edu-container {
+  margin: auto;
+  padding: 60px 20px;
+  background: linear-gradient(to bottom, #f0f4f8, #ffffff);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.edu-container h1 {
+  font-size: 42px;
+  color: #1a1a2e;
+  text-align: center;
+  margin-bottom: 40px;
+  letter-spacing: 2px;
+}
+
+.edu-container h2 {
+  margin-top: 50px;
+  color: #0f3460;
+  font-size: 28px;
+  border-bottom: 3px solid #0f3460;
+  display: inline-block;
+  padding-bottom: 5px;
+  margin-bottom: 20px;
+}
+
+.edu-box-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-top: 20px;
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out;
+}
+
+.edu-box {
+  background: #ffffff;
+  border-left: 6px solid #0f3460;
+  padding: 20px;
+  flex: 1 1 calc(33.333% - 30px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  border-radius: 12px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.edu-box:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.edu-box h3 {
+  font-size: 20px;
+  margin-bottom: 8px;
+  color: #0f3460;
+}
+
+.edu-meta {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 12px;
+}
+
+.edu-description {
+  font-size: 15px;
+  color: #444;
+  line-height: 1.6;
+}
+
+.read-more {
+  margin-top: 15px;
+  display: inline-block;
+  font-size: 14px;
+  color: #0f3460;
+  cursor: pointer;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.read-more:hover {
+  color: #e94560;
+}
+
+@media screen and (max-width: 992px) {
+  .edu-box {
+    flex: 1 1 calc(50% - 30px);
+  }
+
+  .edu-container h1 {
+    font-size: 36px;
+  }
+
+  .edu-container h2 {
+    font-size: 24px;
+  }
+
+  .edu-box h3 {
+    font-size: 18px;
+  }
+
+  .edu-description {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .edu-box-container {
+    flex-direction: column;
+  }
+
+  .edu-box {
+    flex: 1 1 100%;
+  }
+
+  .edu-container {
+    padding: 40px 15px;
+  }
+
+  .edu-container h1 {
+    font-size: 28px;
+    margin-bottom: 30px;
+  }
+
+  .edu-container h2 {
+    font-size: 20px;
+    margin-top: 30px;
+  }
+
+  .edu-box h3 {
+    font-size: 16px;
+  }
+
+  .edu-meta {
+    font-size: 13px;
+  }
+
+  .edu-description {
+    font-size: 13.5px;
+  }
+
+  .read-more {
+    font-size: 13px;
+  }
+}
