@@ -9,7 +9,7 @@ const Projects = () => {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/projects');
+        const res = await axios.get(`${process.env.REACT_APP_API_URL}api/projects`);
         setProjects(res.data);
       } catch (err) {
         console.error('Failed to fetch projects:', err);
@@ -19,7 +19,7 @@ const Projects = () => {
     fetchProjects();
   }, []);
 
-  const BASE_URL = 'http://localhost:5000'; // No need to hardcode `/uploads/` if full path is stored
+// No need to hardcode `/uploads/` if full path is stored
 
   return (
     <div className="projects-container">
@@ -38,13 +38,13 @@ const Projects = () => {
               {project.media && (
                 project.media.endsWith('.mp4') || project.media.endsWith('.webm') ? (
                   <video
-                    src={`${BASE_URL}${project.media}`}
+                    src={`${process.env.REACT_APP_API_URL}${project.media}`}
                     controls
                     className="project-media"
                   />
                 ) : (
                   <img
-                    src={`${BASE_URL}${project.media}`}
+                    src={`${process.env.REACT_APP_API_URL}${project.media}`}
                     alt={project.name}
                     className="project-media"
                   />

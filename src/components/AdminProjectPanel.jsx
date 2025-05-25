@@ -17,9 +17,11 @@ export default function AdminProjectPanel() {
   const [showModal, setShowModal] = useState(false);
   const [editingId, setEditingId] = useState(null);
 
+  const REACT_APP_API_URI = 'https://reactportfolioserver-production.up.railway.app/';
+
   const fetchProjects = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/projects');
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}api/projects`);
       setProjects(res.data);
     } catch (err) {
       console.error('Error fetching projects:', err);
@@ -46,7 +48,7 @@ export default function AdminProjectPanel() {
     });
 
     try {
-      await axios.post('http://localhost:5000/api/projects', projectData, {
+      await axios.post(`${process.env.REACT_APP_API_URL}api/projects`, projectData, {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
       alert('Project added successfully!');
@@ -90,7 +92,7 @@ export default function AdminProjectPanel() {
     });
 
     try {
-      await axios.put(`http://localhost:5000/api/projects/${editingId}`, updatedData, {
+      await axios.put(`${process.env.REACT_APP_API_URL}api/projects/${editingId}`, updatedData, {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
 
@@ -116,7 +118,7 @@ export default function AdminProjectPanel() {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/projects/${id}`);
+      await axios.delete(`${process.env.REACT_APP_API_URL}api/projects/${id}`);
       fetchProjects();
     } catch (err) {
       console.error('Error deleting project:', err);
@@ -132,8 +134,8 @@ export default function AdminProjectPanel() {
     'QA Testing',
   ];
   
-  const BASE_URL = 'http://localhost:5000';
-
+  const BASE_URL = process.env.REACT_APP_API_URL || REACT_APP_API_URI;
+  
   return (
     <div className="projects">
       <h2 className="admin-title">🛠️ Project Management Panel</h2>
