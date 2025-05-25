@@ -25,7 +25,7 @@ const [showMessagesModal, setShowMessagesModal] = useState(false);
 
 const fetchEducations = async () => {
 try {
-const res = await axios.get('http://localhost:5000/api/education');
+const res = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/education`);
 setEducations(res.data);
 } catch (err) {
 console.error('Error fetching educations:', err);
@@ -44,7 +44,7 @@ const handleSubmit = async (e) => {
 e.preventDefault();
 try {
 // Only handle new education creation
-await axios.post('http://localhost:5000/api/education', formData);
+await axios.post(`${process.env.REACT_APP_API_BASE_URL}/education`, formData);
 
   // Reset form and refresh data
   setFormData({ 
@@ -84,7 +84,7 @@ const handleUpdate = async (e) => {
 e.preventDefault();
 try {
 // Handle only updates
-await axios.put(`http://localhost:5000/api/education/${editingId}`, formData);
+await axios.put(`${process.env.REACT_APP_API_BASE_URL}/education/${editingId}`, formData);
 
 
   // Reset form and refresh data
@@ -112,7 +112,7 @@ await axios.put(`http://localhost:5000/api/education/${editingId}`, formData);
 
 const handleDelete = async (id) => {
 try {
-await axios.delete(`http://localhost:5000/api/education/${id}`);
+await axios.delete(`${process.env.REACT_APP_API_BASE_URL}/education/${id}`);
 fetchEducations();
 } catch (err) {
 console.error('Error deleting education:', err);
