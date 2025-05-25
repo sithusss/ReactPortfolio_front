@@ -15,7 +15,8 @@ category: '',
 name: '',
 institute: '',
 period: '',
-description: ''
+description: '',
+link: ''
 });
 const [editingId, setEditingId] = useState(null);
 const [showModal, setShowModal] = useState(false);
@@ -24,7 +25,7 @@ const [showMessagesModal, setShowMessagesModal] = useState(false);
 
 const fetchEducations = async () => {
 try {
-const res = await axios.get(`${process.env.REACT_APP_API_URL}api/education`);
+const res = await axios.get('http://localhost:5000/api/education');
 setEducations(res.data);
 } catch (err) {
 console.error('Error fetching educations:', err);
@@ -43,7 +44,7 @@ const handleSubmit = async (e) => {
 e.preventDefault();
 try {
 // Only handle new education creation
-await axios.post(`${process.env.REACT_APP_API_URL}api/education`, formData);
+await axios.post('http://localhost:5000/api/education', formData);
 
   // Reset form and refresh data
   setFormData({ 
@@ -51,7 +52,8 @@ await axios.post(`${process.env.REACT_APP_API_URL}api/education`, formData);
     name: '', 
     institute: '', 
     period: '', 
-    description: '' 
+    description: '', 
+    link:''
   });
   fetchEducations();
   
@@ -70,7 +72,8 @@ const handleEditClick = (edu) => {
     name:edu.name, 
     institute:edu.institute, 
     period: edu.period, 
-    description: edu.description
+    description: edu.description,
+    link: edu.link
     });
     setEditingId(edu._id);
     setShowModal(true);
@@ -81,7 +84,7 @@ const handleUpdate = async (e) => {
 e.preventDefault();
 try {
 // Handle only updates
-await axios.put(`${process.env.REACT_APP_API_URL}api/education/${editingId}`, formData);
+await axios.put(`http://localhost:5000/api/education/${editingId}`, formData);
 
 
   // Reset form and refresh data
@@ -90,7 +93,8 @@ await axios.put(`${process.env.REACT_APP_API_URL}api/education/${editingId}`, fo
     name: '', 
     institute: '', 
     period: '', 
-    description: '' 
+    description: '',
+    link:''
   });
 
   setShowModal(false);
@@ -108,7 +112,7 @@ await axios.put(`${process.env.REACT_APP_API_URL}api/education/${editingId}`, fo
 
 const handleDelete = async (id) => {
 try {
-await axios.delete(`${process.env.REACT_APP_API_URL}api/education/${id}`);
+await axios.delete(`http://localhost:5000/api/education/${id}`);
 fetchEducations();
 } catch (err) {
 console.error('Error deleting education:', err);
@@ -144,7 +148,17 @@ return (
             ))}
           </select>
 
-          {['name', 'institute', 'period', 'description'].map((field) => (
+          {['name', 'institute', 'period', 'description','link'].map((field) => field === 'description' ? (
+              <textarea
+                key={field}
+                name={field}
+                placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
+                value={formData[field]}
+                onChange={handleChange}
+                required
+                rows={4} 
+              />
+            ) :(
             <input
               key={field}
               type="text"
@@ -172,6 +186,7 @@ return (
               <th>Institute</th>
               <th>Period</th>
               <th>Description</th>
+              <th>Link</th>
               <th>Actions</th>
             </tr>
           </thead>
@@ -185,6 +200,7 @@ return (
                   <td>{edu.institute}</td>
                   <td>{edu.period}</td>
                   <td>{edu.description}</td>
+                  <td>{edu.link}</td>
                   <td>
                     <button onClick={() => handleEditClick(edu)} className="edit-btn">Edit</button>
                     <button onClick={() => handleDelete(edu._id)} className="delete-btn">Delete</button>
@@ -215,7 +231,18 @@ return (
                 <option key={index} value={cat}>{cat}</option>
               ))}
             </select>
-            {['name', 'institute', 'period', 'description'].map((field) => (
+            {['name', 'institute', 'period', 'description', 'link'].map((field) =>field === 'description' ? (
+              <textarea
+                key={field}
+                name={field}
+                placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
+                value={formData[field]}
+                onChange={handleChange}
+                required
+                rows={4}      // number of visible lines
+               
+              />
+            ) : (
               <input
                 key={field}
                 type="text"

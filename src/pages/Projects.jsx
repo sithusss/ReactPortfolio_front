@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import '../styles/Projects.css';
 import axios from 'axios';
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
+import backgroundImage1 from '../assets/images/bg2.jpg';
+import backgroundImage2 from '../assets/images/bg4.jpg';
 
 const Projects = () => {
   const [projects, setProjects] = useState([]);
@@ -9,7 +11,7 @@ const Projects = () => {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const res = await axios.get(`${process.env.REACT_APP_API_URL}api/projects`);
+        const res = await axios.get('http://localhost:5000/api/projects');
         setProjects(res.data);
       } catch (err) {
         console.error('Failed to fetch projects:', err);
@@ -19,11 +21,17 @@ const Projects = () => {
     fetchProjects();
   }, []);
 
-// No need to hardcode `/uploads/` if full path is stored
+  const BASE_URL = 'http://localhost:5000'; // No need to hardcode `/uploads/` if full path is stored
 
   return (
+    <div className="projects-wrapper">
+
+
     <div className="projects-container">
       <h1>P R O J E C T S </h1>
+      <img src={backgroundImage2} alt="Person Bottom Left" className="decorative-image bottom-left" />
+      <img src={backgroundImage1} alt="Person Top Right" className="decorative-image top-right" />
+      
       <div className="projects-box-container">
         {projects.map((project, index) => {
           console.log("project.media:", project.media); // ✅ Log for debugging
@@ -38,13 +46,13 @@ const Projects = () => {
               {project.media && (
                 project.media.endsWith('.mp4') || project.media.endsWith('.webm') ? (
                   <video
-                    src={`${process.env.REACT_APP_API_URL}${project.media}`}
+                    src={`${BASE_URL}${project.media}`}
                     controls
                     className="project-media"
                   />
                 ) : (
                   <img
-                    src={`${process.env.REACT_APP_API_URL}${project.media}`}
+                    src={`${BASE_URL}${project.media}`}
                     alt={project.name}
                     className="project-media"
                   />
@@ -82,6 +90,8 @@ const Projects = () => {
           );
         })}
       </div>
+      
+    </div>
     </div>
   );
 };

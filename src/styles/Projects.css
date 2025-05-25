@@ -5,10 +5,12 @@
   font-family: 'Segoe UI', sans-serif;
   background: linear-gradient(to bottom right, #f0f4f8, #ffffff);
   min-height: 100vh;
+  position: relative;
+  z-index: 2;
 }
 
 .projects-container h1 {
-  font-size: 42px;
+  font-size: 44px;
   color: #0f3460;
   text-align: center;
   margin-bottom: 50px;
@@ -59,19 +61,19 @@
 /* Title & Meta */
 .projects-box h3 {
   color: #0f3460;
-  font-size: 20px;
+  font-size: 32px;
   margin-bottom: 10px;
 }
 
 .projects-meta {
-  font-size: 14px;
+  font-size: 20px;
   color: #3f72af;
   margin-bottom: 12px;
 }
 
 /* Description */
 .projects-description {
-  font-size: 15px;
+  font-size: 22px;
   color: #333;
   line-height: 1.5;
   margin-bottom: 15px;
@@ -100,6 +102,36 @@
   pointer-events: none;
   opacity: 0.6;
 }
+/* Add this at the bottom of Projects.css */
+
+/* Decorative Images Behind */
+.decorative-image {
+  position: absolute;
+  z-index: -2; /* lower than container */
+  opacity: 0.2;
+  width: 40%;
+  pointer-events: none;
+}
+
+.decorative-image.bottom-left {
+  top: 50%;
+  left: 0;
+ 
+}
+
+.decorative-image.top-right {
+  top: 0;
+  right: 0;
+ 
+}
+
+.footer-container {
+  position: relative;
+  z-index: 1000; /* higher than container */
+}
+
+
+
 
 @media screen and (max-width: 1024px) {
   .projects-box {

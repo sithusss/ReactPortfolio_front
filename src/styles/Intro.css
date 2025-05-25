@@ -11,7 +11,8 @@ body {
   flex-wrap: wrap;
   position: relative;
   z-index: 1;
-  background: linear-gradient(to left, #3e3c3a, #9e8f88); /* grey-brown gradient */
+  background: linear-gradient(to right, #919fac, #f2f3f5);  /*gradient */
+ 
 }
 
 /* Image Section */
@@ -19,7 +20,7 @@ body {
   flex: 1;
   max-width: 50%;
   position: relative;
-  clip-path: polygon(0 0, 100% 10%, 100% 90%, 0% 95%);
+  /*clip-path: polygon(0 0, 100% 10%, 100% 90%, 0% 95%);*/
   overflow: hidden;
 }
 
@@ -33,7 +34,7 @@ body {
 .details-section {
   flex: 2;
   padding: 60px;
-  color: #fff;
+  color: #242424;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -45,14 +46,14 @@ body {
   font-size: 5rem;
   font-weight: 700;
   margin-bottom: 10px;
-  color: #ffffff;
+  color: #302f2f;
   font-family: 'Poppins', sans-serif;
   font-weight: 700;
 }
 
 .role {
   font-size: 2rem;
-  color: #d4af7f; /* Elegant warm accent */
+  color: #3a6d8f; /* Elegant warm accent */
   margin-bottom: 20px;
   font-weight: 500;
   font-family: 'Poppins', sans-serif;
@@ -62,8 +63,22 @@ body {
 
 .description {
   font-size: 1.3rem;
-  color: #f0f0f0;
+  color: #3e3e3e;
   line-height: 1.7;
+}
+
+.decorative-image1 {
+  position: absolute;
+  z-index: -2; /* lower than container */
+  opacity: 0.8;
+  width: 20%;
+  pointer-events: none;
+}
+
+.decorative-image1.top-right {
+  top: 3.5%;
+  right: 0;
+ 
 }
   
 /* Apply elegant fonts globally for this section */
@@ -139,6 +154,56 @@ body {
   border: 2px solid #007bff;
 }
 
+.image-bar-section {
+  margin: 50px 0;
+  text-align: center;
+  overflow: hidden;
+}
+
+.image-bar {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+  height: 350px;
+  margin-top: 10px;
+}
+
+.image-track {
+  display: flex;
+  width: calc(150px * 20); /* 10 images, repeated for infinite effect */
+  animation: scrollTrain 20s linear infinite;
+  margin-top: 30px;
+}
+
+.bar-image {
+  width: 250px;
+  height: 200px;
+  margin: 10px;
+  object-fit: cover;
+  transition: transform 0.5s ease-in-out;
+}
+
+.bar-image:hover {
+  transform: scale(1.5);
+  z-index: 2;
+}
+
+/* Pause animation on hover */
+.image-bar:hover .image-track {
+  animation-play-state: paused;
+}
+
+/* Keyframe for train-like scroll */
+@keyframes scrollTrain {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+
 
   @media screen and (max-width: 1085px) {
   .intro-container {
@@ -191,6 +256,11 @@ body {
   .what-i-do-content {
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   }
+
+  .decorative-image1 {
+    display: none;
+  }
+
 }
 
 @media screen and (max-width: 768px) {
@@ -227,6 +297,10 @@ body {
     width: 60px;
     height: 60px;
   }
+
+  .decorative-image1 {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 480px) {
@@ -238,13 +312,20 @@ body {
     flex-direction: column;
     position: relative;
     z-index: 1;
-    background: linear-gradient(to left, #3e3c3a, #9e8f88); /* grey-brown gradient */
+    /*background: linear-gradient(to left, #3e3c3a, #9e8f88);  grey-brown gradient */
   }
   .profile-image {
     width: 55%;
     height: auto;
-    clip-path:polygon(10% 10%, 90% 10%, 100% 95%, 0% 95%);
+    
   }
+  .details-section {
+  padding: 16px;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
 
   .name {
     font-size: 2rem;
@@ -252,15 +333,23 @@ body {
 
   .role {
     font-size: 1.1rem;
+    margin-bottom: 20px;
   }
 
   .description {
     font-size: 0.95rem;
+    max-width: fit-content;
   }
 
   .what-i-do-section {
-    width: 85%;
-    margin-left: 3.5%;
+  width: 95%;
+  padding: 20px;
+  margin: 2%;
+  box-sizing: border-box;
+}
+
+  .what-i-do-section h2 {
+    font-size: 1.5rem;
     
   }
 
@@ -270,7 +359,8 @@ body {
   }
 
   .category {
-    padding: 16px;
+    padding: 0.9rem;
+    max-width: 100%;
   }
 
   .category h3 {
@@ -280,4 +370,13 @@ body {
   .sub-content p {
     font-size: 0.9rem;
   }
+
+  .decorative-image1 {
+    display: none;
+  }
+  .image-bar-section {
+    display: none ;
+}
+ 
+
 }

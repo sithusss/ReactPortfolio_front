@@ -9,12 +9,10 @@ const Messages = ({ onClose }) => {
   const [messages, setMessages] = useState([]);
   const [readMessages, setReadMessages] = useState([]);
 
-  //const REACT_APP_API_URI = 'https://reactportfolioserver-production.up.railway.app/';
-
   useEffect(() => {
     const fetchMessages = async () => {
       try {
-        const res = await axios.get(`${process.env.REACT_APP_API_URL}api/contact`);
+        const res = await axios.get('http://localhost:5000/api/contact');
         const unread = res.data.filter(msg => msg.status !== 'read');
         const read = res.data.filter(msg => msg.status === 'read');
         setMessages(unread);
@@ -29,7 +27,7 @@ const Messages = ({ onClose }) => {
 
   const handleMarkAsRead = async (id) => {
     try {
-      await axios.put(`h${process.env.REACT_APP_API_URL}api/contact/${id}/read`);
+      await axios.put(`http://localhost:5000/api/contact/${id}/read`);
       const updatedMsg = messages.find(msg => msg._id === id);
       if (updatedMsg) {
         updatedMsg.status = 'read';
@@ -43,7 +41,7 @@ const Messages = ({ onClose }) => {
 
   const handleDelete =async(id) => { 
     try {
-      await axios.delete(`${process.env.REACT_APP_API_URL}api/contact/${id}`);
+      await axios.delete(`http://localhost:5000/api/contact/${id}`);
       setReadMessages(prev => prev.filter(msg => msg._id !== id));
     } catch (err) {
       console.error('Error deleting message', err);

@@ -3,6 +3,9 @@ import axios from 'axios';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import '../styles/Education.css';
+import backgroundImage1 from '../assets/images/bg5.jpg';
+import backgroundImage2 from '../assets/images/bg6.jpg';
+import {FaExternalLinkAlt } from 'react-icons/fa';
 
 const Education = () => {
   const [educationData, setEducationData] = useState([]);
@@ -11,7 +14,7 @@ const Education = () => {
   useEffect(() => {
     const fetchEducation = async () => {
       try {
-        const res = await axios.get(`${process.env.REACT_APP_API_URL}/education`);
+        const res = await axios.get('http://localhost:5000/api/education');
         setEducationData(res.data);
       } catch (err) {
         console.error('Failed to fetch education data:', err);
@@ -47,6 +50,9 @@ const Education = () => {
     <div className="edu-container">
       <h1>E D U C A T I O N</h1>
 
+      <img src={backgroundImage2} alt="Person Bottom Left" className="decorative-image3 bottom-left" />
+      <img src={backgroundImage1} alt="Person Top Right" className="decorative-image3 top-right" />
+
       {Object.keys(groupedData).map((category) => {
         const items = groupedData[category];
         const isExpanded = expandedCategories[category];
@@ -66,13 +72,23 @@ const Education = () => {
                   <h3>{item.name}</h3>
                   <p className="edu-meta">{item.period} | {item.institute}</p>
                   <p className="edu-description">{item.description}</p>
+                  <div className="links">
+                    <a href={item.link || '#'}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`link-icon ${!item.link ? 'disabled' : ''}`}
+                      onClick={e => !item.link && e.preventDefault()}>                            
+                    <FaExternalLinkAlt />
+                    </a>
+                  </div>
                 </div>
+                
               ))}
             </div>
 
             {items.length > 3 && (
               <div className="read-more" onClick={() => toggleReadMore(category)}>
-                {isExpanded ? 'Show Less' : 'Read More'}
+                {isExpanded ? 'Show Less...' : 'Read More...'}
               </div>
             )}
           </section>

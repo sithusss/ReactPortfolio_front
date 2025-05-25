@@ -1,7 +1,7 @@
 import React from 'react';
 import '../styles/Intro.css';
 import '../styles/KeyFrames.css';
-import MyImage from'../assets/images/Sandali Liyanage.jpg';
+import MyImage from'../assets/images/Sandali Liyanage.png';
 import Karate from '../assets/images/karate.jpg';
 import Announcing from '../assets/images/announcing.jpg';
 import TechOne from '../assets/images/tech1.jpg';
@@ -10,7 +10,20 @@ import LeadershipOne from '../assets/images/leader1.jpg';
 import LeadershipTwo from '../assets/images/leader2.jpg';
 import VolunteeringOne from '../assets/images/ieee.png';
 import VolunteeringTwo from '../assets/images/Rotaract.png';
+import backgroundImage1 from '../assets/images/bg3.png';
 import Skills from '../components/Skills'; // Import the Skills component
+import Img1 from '../assets/image-bar/img1.png';
+import Img2 from '../assets/image-bar/img2.jpg';
+import Img3 from '../assets/image-bar/img3.jpg';
+import Img4 from '../assets/image-bar/img4.jpg';
+import Img5 from '../assets/image-bar/img5.jpg';
+import Img6 from '../assets/image-bar/img6.jpg';
+import Img7 from '../assets/image-bar/img7.jpg';
+import Img8 from '../assets/image-bar/img8.jpg';
+import Img9 from '../assets/image-bar/img9.jpg';
+import Img10 from '../assets/image-bar/img10.jpg';
+
+const imageBarImages = [Img1, Img2, Img3, Img4, Img5, Img6, Img7, Img8, Img9, Img10];
 
 // Initialize AOS (Animate On Scroll) library for animations
 
@@ -32,7 +45,7 @@ const Intro = () => {
           className="profile-image"
         />
       </div>
-
+      <img src={backgroundImage1} alt="Person Top Right" className="decorative-image1 top-right" />
       {/* Initial Details Section */}
       <div className="details-section" data-aos="fade-left">
         <h1 className="name">Sandali Liyanage</h1>
@@ -182,7 +195,24 @@ const Intro = () => {
         <div className="skills-content">
           <Skills />
         </div>
+        
       </div>
+              {/* Animated Image Bar Section */}
+        <div className="image-bar-section" data-aos="fade-up">
+          <h2>M O R E &nbsp; A B O U T &nbsp; M E</h2>
+          <div className="image-bar">
+            <div className="image-track">
+              {[...imageBarImages, ...imageBarImages].map((imgSrc, index) => (
+                <img
+                  key={index}
+                  src={imgSrc}
+                  alt={`img${index + 1}`}
+                  className="bar-image"
+                />
+              ))}
+            </div>
+          </div>
+        </div>
     </div>
   );
 };

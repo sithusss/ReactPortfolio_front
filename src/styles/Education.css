@@ -3,10 +3,11 @@
   padding: 60px 20px;
   background: linear-gradient(to bottom, #f0f4f8, #ffffff);
   font-family: 'Segoe UI', sans-serif;
+  position: relative;
 }
 
 .edu-container h1 {
-  font-size: 42px;
+  font-size: 44px;
   color: #1a1a2e;
   text-align: center;
   margin-bottom: 40px;
@@ -16,7 +17,7 @@
 .edu-container h2 {
   margin-top: 50px;
   color: #0f3460;
-  font-size: 28px;
+  font-size: 36px;
   border-bottom: 3px solid #0f3460;
   display: inline-block;
   padding-bottom: 5px;
@@ -48,32 +49,58 @@
 }
 
 .edu-box h3 {
-  font-size: 20px;
+  font-size: 26px;
   margin-bottom: 8px;
   color: #0f3460;
 }
 
 .edu-meta {
-  font-size: 14px;
+  font-size: 24px;
   color: #666;
   margin-bottom: 12px;
+  font-weight: 500;
 }
 
 .edu-description {
-  font-size: 15px;
+  font-size: 22px;
   color: #444;
   line-height: 1.6;
 }
 
+.decorative-image3 {
+  position: absolute;
+  z-index: 0; /* lower than container */
+  opacity: 0.2;
+  width: 40%;
+  pointer-events: none;
+}
+
+.decorative-image3.bottom-left {
+  top: 48%;
+  left: 0;
+ 
+}
+
+.decorative-image3.top-right {
+  top: 0;
+  right: 0;
+ 
+}
 .read-more {
-  margin-top: 15px;
-  display: inline-block;
-  font-size: 14px;
+  margin: 10px 55px 0px 0px;
+  display:block;
+  font-size: 1rem;
   color: #0f3460;
   cursor: pointer;
   font-weight: bold;
   transition: color 0.3s;
+  font-style: italic;
+  float:center;
+  padding:10px 15px;
+  background-color:#ADD8E6;
+  border-radius:5%;
 }
+
 
 .read-more:hover {
   color: #e94560;
@@ -86,6 +113,8 @@
 
   .edu-container h1 {
     font-size: 36px;
+    position: relative;
+    z-index: 2;
   }
 
   .edu-container h2 {
@@ -99,6 +128,25 @@
   .edu-description {
     font-size: 14px;
   }
+
+  .decorative-image3 {
+      position: absolute;
+      z-index: 0; /* lower than container */
+      opacity: 0.2;
+      width: 80%;
+      pointer-events: none;
+}
+
+.decorative-image3.bottom-left {
+  display: none;
+ 
+}
+
+.decorative-image3.top-right {
+  top: 5%;
+  right: 0;
+ 
+}
 }
 
 @media screen and (max-width: 600px) {
@@ -117,6 +165,8 @@
   .edu-container h1 {
     font-size: 28px;
     margin-bottom: 30px;
+    position: relative;
+    z-index: 2;
   }
 
   .edu-container h2 {
@@ -138,5 +188,6 @@
 
   .read-more {
     font-size: 13px;
+    
   }
 }
