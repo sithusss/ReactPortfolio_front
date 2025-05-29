@@ -14,7 +14,7 @@ const Education = () => {
   useEffect(() => {
     const fetchEducation = async () => {
       try {
-        const res = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/education`);
+        const res = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/education`);
         setEducationData(res.data);
       } catch (err) {
         console.error('Failed to fetch education data:', err);

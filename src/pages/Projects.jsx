@@ -11,7 +11,7 @@ const Projects = () => {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const res = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/projects`);
+        const res = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/projects`);
         setProjects(res.data);
       } catch (err) {
         console.error('Failed to fetch projects:', err);

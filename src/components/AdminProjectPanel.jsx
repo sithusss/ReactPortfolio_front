@@ -19,7 +19,7 @@ export default function AdminProjectPanel() {
 
   const fetchProjects = async () => {
     try {
-      const res = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/projects`);
+      const res = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/projects`);
       setProjects(res.data);
     } catch (err) {
       console.error('Error fetching projects:', err);
@@ -46,7 +46,7 @@ export default function AdminProjectPanel() {
     });
 
     try {
-      await axios.post(`${process.env.REACT_APP_API_BASE_URL}/projects`, projectData, {
+      await axios.post(`${process.env.REACT_APP_API_BASE_URL}/api/projects`, projectData, {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
       alert('Project added successfully!');
@@ -90,7 +90,7 @@ export default function AdminProjectPanel() {
     });
 
     try {
-      await axios.put(`${process.env.REACT_APP_API_BASE_URL}/projects/${editingId}`, updatedData, {
+      await axios.put(`${process.env.REACT_APP_API_BASE_URL}/api/projects/${editingId}`, updatedData, {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
 
@@ -116,7 +116,7 @@ export default function AdminProjectPanel() {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`${process.env.REACT_APP_API_BASE_URL}/projects/${id}`);
+      await axios.delete(`${process.env.REACT_APP_API_BASE_URL}/api/projects/${id}`);
       fetchProjects();
     } catch (err) {
       console.error('Error deleting project:', err);

@@ -20,7 +20,7 @@ const ContactPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(`${process.env.REACT_APP_API_BASE_URL}/contact`, formData);
+      await axios.post(`${process.env.REACT_APP_API_BASE_URL}/api/contact`, formData);
       alert("Message sent!");
       setFormData({ name: "", email: "", phone: "", message: "" });
     } catch (err) {

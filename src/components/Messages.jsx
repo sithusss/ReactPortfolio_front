@@ -12,7 +12,7 @@ const Messages = ({ onClose }) => {
   useEffect(() => {
     const fetchMessages = async () => {
       try {
-        const res = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/contact`);
+        const res = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/contact`);
         const unread = res.data.filter(msg => msg.status !== 'read');
         const read = res.data.filter(msg => msg.status === 'read');
         setMessages(unread);
@@ -27,7 +27,7 @@ const Messages = ({ onClose }) => {
 
   const handleMarkAsRead = async (id) => {
     try {
-      await axios.put(`${process.env.REACT_APP_API_BASE_URL}/contact/${id}/read`);
+      await axios.put(`${process.env.REACT_APP_API_BASE_URL}/api/contact/${id}/read`);
       const updatedMsg = messages.find(msg => msg._id === id);
       if (updatedMsg) {
         updatedMsg.status = 'read';
@@ -41,7 +41,7 @@ const Messages = ({ onClose }) => {
 
   const handleDelete =async(id) => { 
     try {
-      await axios.delete(`${process.env.REACT_APP_API_BASE_URL}/contact/${id}`);
+      await axios.delete(`${process.env.REACT_APP_API_BASE_URL}/api/contact/${id}`);
       setReadMessages(prev => prev.filter(msg => msg._id !== id));
     } catch (err) {
       console.error('Error deleting message', err);
