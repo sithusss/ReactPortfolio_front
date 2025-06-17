@@ -20,9 +20,10 @@ export default function AdminProjectPanel() {
   const fetchProjects = async () => {
     try {
       const res = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/projects`);
-      setProjects(res.data);
+      setProjects(Array.isArray(res.data) ? res.data : []);
     } catch (err) {
       console.error('Error fetching projects:', err);
+      setProjects([]);
     }
   };
 
@@ -131,13 +132,12 @@ export default function AdminProjectPanel() {
     'UI/UX Design',
     'QA Testing',
   ];
-  
+
   const BASE_URL = `${process.env.REACT_APP_API_BASE_URL}`;
 
   return (
     <div className="projects">
       <h2 className="admin-title">🛠️ Project Management Panel</h2>
-
       <form onSubmit={handleSubmit} className="admin-form" encType="multipart/form-data">
         <div className="form-grid">
           <select name="category" value={formData.category} onChange={handleChange} required>
@@ -147,16 +147,16 @@ export default function AdminProjectPanel() {
             ))}
           </select>
           {['name', 'technologies', 'period', 'description', 'githubLink', 'liveLink'].map((field) => field === 'description' ? (
-              <textarea
-                key={field}
-                name={field}
-                placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
-                value={formData[field]}
-                onChange={handleChange}
-                required
-                rows={4} 
-              />
-            ) :(
+            <textarea
+              key={field}
+              name={field}
+              placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
+              value={formData[field]}
+              onChange={handleChange}
+              required
+              rows={4}
+            />
+          ) : (
             <input
               key={field}
               type="text"
@@ -171,7 +171,6 @@ export default function AdminProjectPanel() {
         </div>
         <button type="submit" className="submit-btn">Add Project</button>
       </form>
-
       <div className="admin-table-container">
         <h3 className="table-title">📋 Project List</h3>
         <table className="admin-table">
@@ -190,7 +189,7 @@ export default function AdminProjectPanel() {
             </tr>
           </thead>
           <tbody>
-            {projects.length > 0 ? (
+            {Array.isArray(projects) && projects.length > 0 ? (
               projects.map((proj) => (
                 <tr key={proj._id}>
                   <td>{proj.projectId}</td>
@@ -220,8 +219,6 @@ export default function AdminProjectPanel() {
           </tbody>
         </table>
       </div>
-
-      {/* Modal for editing */}
       {showModal && (
         <div className="modal-backdrop">
           <div className="modal">
@@ -234,16 +231,16 @@ export default function AdminProjectPanel() {
                 ))}
               </select>
               {['name', 'technologies', 'period', 'description', 'githubLink', 'liveLink'].map((field) => field === 'description' ? (
-              <textarea
-                key={field}
-                name={field}
-                placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
-                value={formData[field]}
-                onChange={handleChange}
-                required
-                rows={4} 
-              />
-            ) :(
+                <textarea
+                  key={field}
+                  name={field}
+                  placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
+                  value={formData[field]}
+                  onChange={handleChange}
+                  required
+                  rows={4}
+                />
+              ) : (
                 <input
                   key={field}
                   type="text"
