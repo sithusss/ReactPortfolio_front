@@ -5,7 +5,7 @@ import 'aos/dist/aos.css';
 import '../styles/Education.css';
 import backgroundImage1 from '../assets/images/bg5.jpg';
 import backgroundImage2 from '../assets/images/bg6.jpg';
-import {FaExternalLinkAlt } from 'react-icons/fa';
+import { FaExternalLinkAlt } from 'react-icons/fa';
 
 const Education = () => {
   const [educationData, setEducationData] = useState([]);
@@ -15,9 +15,11 @@ const Education = () => {
     const fetchEducation = async () => {
       try {
         const res = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/education`);
-        setEducationData(res.data);
+        // Ensure the data is always an array
+        setEducationData(Array.isArray(res.data) ? res.data : []);
       } catch (err) {
         console.error('Failed to fetch education data:', err);
+        setEducationData([]); // fallback to empty array on error
       }
     };
 
@@ -27,13 +29,16 @@ const Education = () => {
 
   const groupByCategory = (educationList) => {
     const grouped = {};
-    educationList.forEach(edu => {
-      const category = edu.category || 'Uncategorized';
-      if (!grouped[category]) {
-        grouped[category] = [];
-      }
-      grouped[category].push(edu);
-    });
+    // Defensive: only iterate if educationList is an array
+    if (Array.isArray(educationList)) {
+      educationList.forEach(edu => {
+        const category = edu.category || 'Uncategorized';
+        if (!grouped[category]) {
+          grouped[category] = [];
+        }
+        grouped[category].push(edu);
+      });
+    }
     return grouped;
   };
 
@@ -73,16 +78,17 @@ const Education = () => {
                   <p className="edu-meta">{item.period} | {item.institute}</p>
                   <p className="edu-description">{item.description}</p>
                   <div className="links">
-                    <a href={item.link || '#'}
+                    <a
+                      href={item.link || '#'}
                       target="_blank"
                       rel="noopener noreferrer"
                       className={`link-icon ${!item.link ? 'disabled' : ''}`}
-                      onClick={e => !item.link && e.preventDefault()}>                            
-                    <FaExternalLinkAlt />
+                      onClick={e => !item.link && e.preventDefault()}
+                    >
+                      <FaExternalLinkAlt />
                     </a>
                   </div>
                 </div>
-                
               ))}
             </div>
 
