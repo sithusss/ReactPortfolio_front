@@ -4,6 +4,13 @@
   background: linear-gradient(to bottom, #f0f4f8, #ffffff);
   font-family: 'Segoe UI', sans-serif;
   position: relative;
+  flex:1;
+}
+
+.page-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .edu-container h1 {

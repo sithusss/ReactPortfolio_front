@@ -52,6 +52,7 @@ const Education = () => {
   };
 
   return (
+    <div className="page-wrapper">
     <div className="edu-container">
       <h1>E D U C A T I O N</h1>
 
@@ -100,6 +101,7 @@ const Education = () => {
           </section>
         );
       })}
+    </div>
     </div>
   );
 };
