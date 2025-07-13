@@ -66,7 +66,7 @@ const ContactPage = () => {
 
       {/* Right Side */}
       <div className="contact-right" data-aos="fade-left">
-        <h2>Send Us A Message</h2>
+        <h2>Send Me A Message</h2>
         <form onSubmit={handleSubmit}>
           <input name="name" value={formData.name} onChange={handleChange} placeholder="Full Name" required />
           <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="Email" required />

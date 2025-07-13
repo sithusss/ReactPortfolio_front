@@ -201,10 +201,14 @@ export default function AdminProjectPanel() {
                   <td><a href={proj.githubLink} target="_blank" rel="noreferrer">GitHub</a></td>
                   <td><a href={proj.liveLink} target="_blank" rel="noreferrer">Live</a></td>
                   <td>
-                    {proj.media && (proj.media.endsWith('.mp4') || proj.media.endsWith('.webm')) ? (
-                      <video src={`${BASE_URL}${proj.media}`} width="100" controls />
+                    {proj.media && typeof proj.media === 'string' && proj.media.trim() !== '' ? (
+                      proj.media.endsWith('.mp4') || proj.media.endsWith('.webm') ? (
+                        <video src={`${BASE_URL}${proj.media}`} width="100" controls />
+                      ) : (
+                        <img src={`${BASE_URL}${proj.media}`} width="100" alt="project" />
+                      )
                     ) : (
-                      <img src={`${BASE_URL}${proj.media}`} width="100" alt="project" />
+                      <span style={{ color: '#aaa' }}>No media</span>
                     )}
                   </td>
                   <td>

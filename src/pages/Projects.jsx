@@ -57,6 +57,7 @@ const Projects = () => {
                 {/* Project Details */}
                 <h3>{project.name}</h3>
                 <p className="projects-meta">{project.period} | {project.category}</p>
+                <p className="project-tech">{project.technologies}</p>
                 <p className="projects-description">{project.description}</p>
 
                 {/* Links */}
