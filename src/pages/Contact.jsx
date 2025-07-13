@@ -3,7 +3,7 @@ import axios from "axios";
 import "../styles/Contact.css";
 import backgroundImage1 from '../assets/images/bg1.png';
 
-import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaLinkedin, FaGithub, FaFacebook, FaInstagram, FaMailBulk } from "react-icons/fa";
+import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaLinkedin, FaGithub, FaFacebook, FaInstagram } from "react-icons/fa";
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -38,12 +38,7 @@ const ContactPage = () => {
 
         <div className="info-item" data-aos="fade-up" data-aos-delay="100">
           <FaMapMarkerAlt className="icon" />
-          <p>No.136/E, Srimath Kudaratwatta Road, Kandy, <br /> Sri Lanka. <br /> 20000</p>
-        </div>
-
-        <div className="info-item" data-aos="fade-up" data-aos-delay="200">
-          <FaMailBulk className="icon" />
-          <p>No.513/6, Srimath Kudaratwatta Road, Kandy, <br /> Sri Lanka. <br /> 20000</p>
+          <p> Kandy, <br />Central Province, <br /> Sri Lanka. <br /> 20000</p>
         </div>
 
         <div className="info-item" data-aos="fade-up" data-aos-delay="300">
