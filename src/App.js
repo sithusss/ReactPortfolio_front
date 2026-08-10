@@ -4,15 +4,15 @@ import { useEffect } from 'react';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
 import Login from './pages/Login';
-import Intro from './pages/Intro';
+import Intro from './components/Intro';
 import Admin from './pages/Admin';
 import Education from './pages/Education'; 
 import Projects from './pages/Projects';
+import Research from './pages/Research';
 import Contact from './pages/Contact';
 import AdminProjecPanel from './components/AdminProjectPanel';
 import Messages from './components/Messages';
 import Skills from './components/Skills';
-import './styles/Navbar.css';
 import AOS from 'aos';
 import 'aos/dist/aos.css'; 
 
@@ -38,6 +38,7 @@ const App = () => {
             <Route path="/admin" element={<Admin />} />
             <Route path="/education" element={<Education />} />
             <Route path="/projects" element={<Projects />} />
+            <Route path="/research" element={<Research />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/admin-project-panel" element={<AdminProjecPanel />} />
             <Route path="/messages" element={<Messages />} />
